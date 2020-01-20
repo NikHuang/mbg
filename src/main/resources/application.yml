@@ -1,0 +1,18 @@
+server:
+  port: 8998
+
+spring:
+  datasource:
+    name: springboot
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      filter: stat
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://192.168.2.3:3306/mall?characterEncoding=utf-8&useSSL=false&allowMultiQueries=true&serverTimezone=UTC
+      username: root
+      password: 123456
+      initial-size: 10
+      min-idle: 10
+      max-active: 1000
+      max-wait: 60000
+      time-between-eviction-runs-millis: 60000

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <!--数据库驱动路径 可省略 但是oracle不行 必须指定-->
+    <!--<classPathEntry location="E:\worklib\mysql-connector-java-5.1.6.jar" />-->
+
+    <context id="DB2Tables" targetRuntime="MyBatis3">
+
+        <!-- 使用自带序列化插件 -->
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+        <!-- 整合lombok-->
+        <plugin type="com.chrm.mybatis.generator.plugins.LombokPlugin" >
+            <property name="hasLombok" value="true"/>
+        </plugin>
+        <!--不追加xml-->
+        <plugin type="org.mybatis.generator.plugins.UnmergeableXmlMappersPlugin"></plugin>
+        <!--省略掉注释-->
+        <commentGenerator>
+            <property name="suppressAllComments" value="true" />
+        </commentGenerator>
+        <!--数据库配置 参考yml配置 -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://192.168.2.3:3306/payment?characterEncoding=utf-8"
+                        userId="root"
+                        password="123456">
+        </jdbcConnection>
+
+        <javaTypeResolver >
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+        <!--domain配置-->
+        <javaModelGenerator targetPackage="com.example.demo.domain" targetProject="E:\pay\src\main\java">
+            <property name="enableSubPackages" value="true" />
+        </javaModelGenerator>
+        <!--xml配置-->
+        <sqlMapGenerator targetPackage="mapper"  targetProject="E:\pay\src\main\resources">
+            <property name="enableSubPackages" value="true" />
+        </sqlMapGenerator>
+        <!--dao配置-->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.example.demo.dao"  targetProject="E:\pay\src\main\java">
+            <property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
+
+        <!--生成配置 舍弃example-->
+        <table tableName="testpayment" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
+        enableUpdateByExample="false"></table>
+
+    </context>
+</generatorConfiguration>
