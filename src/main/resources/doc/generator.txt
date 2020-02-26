@@ -1,2 +1,10 @@
 使用 mgb需要 pom和generatorConfig共同配置
 整合lombok https://www.jianshu.com/p/7f57be69bb94
+
+1.使用既有配置 存在text字段的表 需要把对应的字段进行重写
+2.整合lombok https://www.jianshu.com/p/7f57be69bb94
+3.删除jdbctype以及parameterType https://www.jianshu.com/p/7aea3baa8473
+4.删除resultMap结点 并把 使用到的resultMap结点的地方修改为 resultType http://www.imooc.com/article/262684
+该修改完全参照文档是有问题的 需要手动修改 getBaseRecordType
+
+源码如何修改 http://www.imooc.com/article/262684

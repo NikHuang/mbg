@@ -23,7 +23,7 @@
         </commentGenerator>
         <!--数据库配置 参考yml配置 -->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://192.168.2.3:3306/payment?characterEncoding=utf-8"
+                        connectionURL="jdbc:mysql://localhost:3306/newmall?characterEncoding=utf-8"
                         userId="root"
                         password="123456">
         </jdbcConnection>
@@ -32,21 +32,36 @@
             <property name="forceBigDecimals" value="false" />
         </javaTypeResolver>
         <!--domain配置-->
-        <javaModelGenerator targetPackage="com.example.demo.domain" targetProject="E:\pay\src\main\java">
+        <javaModelGenerator targetPackage="com.recover.spmall.domain" targetProject="D:\work\spmall\src\main\java">
             <property name="enableSubPackages" value="true" />
         </javaModelGenerator>
         <!--xml配置-->
-        <sqlMapGenerator targetPackage="mapper"  targetProject="E:\pay\src\main\resources">
+        <sqlMapGenerator targetPackage="mapper"  targetProject="D:\work\spmall\src\main\resources">
             <property name="enableSubPackages" value="true" />
         </sqlMapGenerator>
         <!--dao配置-->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.example.demo.dao"  targetProject="E:\pay\src\main\java">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.recover.spmall.dao"  targetProject="D:\work\spmall\src\main\java">
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
 
         <!--生成配置 舍弃example-->
-        <table tableName="testpayment" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
+        <table tableName="mall_user" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
         enableUpdateByExample="false"></table>
+        <table tableName="mall_shipping" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
+               enableUpdateByExample="false"></table>
+        <table tableName="mall_category" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
+               enableUpdateByExample="false"></table>
+        <table tableName="mall_order" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
+               enableUpdateByExample="false"></table>
+        <table tableName="mall_order_item" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
+               enableUpdateByExample="false"></table>
+        <table tableName="mall_product" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
+               enableUpdateByExample="false">
+            <columnOverride column="sub_images" javaType="java.lang.String" jdbcType="VARCHAR"></columnOverride>
+            <columnOverride column="detail" javaType="java.lang.String" jdbcType="VARCHAR"></columnOverride>
+        </table>
+        <table tableName="mall_pay_info" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
+               enableUpdateByExample="false"></table>
 
     </context>
 </generatorConfiguration>
